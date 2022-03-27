@@ -18,8 +18,8 @@ export class ContentsServer {
 
         return new Promise((resolve, reject) => {
                 const contents: sectionType[] = [];
-                let datas: sectionType
                 let link: linkType = {url: null, title: null, icon: null}
+                let datas: sectionType
                 rl.on('line', (data) => {
                     const line = data.trim();
                     if (line === '') {
@@ -40,10 +40,11 @@ export class ContentsServer {
                     }
                 })
                 rl.on('close', async () => {
+                    if (datas !== undefined) contents.push(datas)
                     for (const line of contents) {
                         for (const links of line.links) {
                             // 開発中はコメントアウトする
-                            links.icon = await getFavicon(links.url)
+                            // links.icon = await getFavicon(links.url)
                         }
                     }
                     resolve(contents)
