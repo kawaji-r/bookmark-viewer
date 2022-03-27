@@ -15,7 +15,7 @@ export const LinkCard = (props: {url: string, title: string, icon: string}) => {
             <a target="_blank">
                 <SCard>
                     {icon &&
-                        <SP><SImg src={icon} alt="{title}"/></SP>
+                        <SP><SImg src={icon} alt={title} onError={e => e.target.style.display = 'none'}/></SP>
                     }
                     {title}
                 </SCard>

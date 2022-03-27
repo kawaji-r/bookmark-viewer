@@ -44,7 +44,7 @@ export class ContentsServer {
                     for (const line of contents) {
                         for (const links of line.links) {
                             // 開発中はコメントアウトする
-                            // links.icon = await getFavicon(links.url)
+                            links.icon = await getFavicon(links.url)
                         }
                     }
                     resolve(contents)
